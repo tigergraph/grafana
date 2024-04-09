@@ -469,7 +469,7 @@ require (
 	github.com/xwb1989/sqlparser v0.0.0-20180606152119-120387863bf2 // @grafana/grafana-app-platform-squad
 )
 
-require github.com/getkin/kin-openapi v0.120.0 // @grafana/grafana-as-code
+require github.com/getkin/kin-openapi v0.124.0 // @grafana/grafana-as-code
 
 require github.com/grafana/authlib v0.0.0-20240328140636-a7388d0bac72 // @grafana/identity-access-team
 
