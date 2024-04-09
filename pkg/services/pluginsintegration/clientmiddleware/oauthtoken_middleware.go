@@ -3,12 +3,16 @@ package clientmiddleware
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 	"github.com/grafana/grafana/pkg/components/simplejson"
+	"github.com/grafana/grafana/pkg/infra/log"
 	"github.com/grafana/grafana/pkg/plugins"
 	"github.com/grafana/grafana/pkg/services/contexthandler"
+	contextmodel "github.com/grafana/grafana/pkg/services/contexthandler/model"
 	"github.com/grafana/grafana/pkg/services/datasources"
+	"github.com/grafana/grafana/pkg/services/login"
 	"github.com/grafana/grafana/pkg/services/oauthtoken"
 )
 
@@ -20,6 +24,7 @@ func NewOAuthTokenMiddleware(oAuthTokenService oauthtoken.OAuthTokenService) plu
 		return &OAuthTokenMiddleware{
 			next:              next,
 			oAuthTokenService: oAuthTokenService,
+			log:               log.New("oauth_token_middleware"),
 		}
 	})
 }
@@ -32,6 +37,7 @@ const (
 type OAuthTokenMiddleware struct {
 	oAuthTokenService oauthtoken.OAuthTokenService
 	next              plugins.Client
+	log               log.Logger
 }
 
 func (m *OAuthTokenMiddleware) applyToken(ctx context.Context, pCtx backend.PluginContext, req interface{}) error {
@@ -55,36 +61,54 @@ func (m *OAuthTokenMiddleware) applyToken(ctx context.Context, pCtx backend.Plug
 	}
 
 	if m.oAuthTokenService.IsOAuthPassThruEnabled(ds) {
-		if token := m.oAuthTokenService.GetCurrentOAuthToken(ctx, reqCtx.SignedInUser); token != nil {
-			authorizationHeader := fmt.Sprintf("%s %s", token.Type(), token.AccessToken)
-			idTokenHeader := ""
+		authorizationHeader, idTokenHeader := m.getAuthTokenHeader(ctx, reqCtx)
 
-			idToken, ok := token.Extra("id_token").(string)
-			if ok && idToken != "" {
-				idTokenHeader = idToken
+		switch t := req.(type) {
+		case *backend.QueryDataRequest:
+			t.Headers[tokenHeaderName] = authorizationHeader
+			if idTokenHeader != "" {
+				t.Headers[idTokenHeaderName] = idTokenHeader
 			}
-
-			switch t := req.(type) {
-			case *backend.QueryDataRequest:
-				t.Headers[tokenHeaderName] = authorizationHeader
-				if idTokenHeader != "" {
-					t.Headers[idTokenHeaderName] = idTokenHeader
-				}
-			case *backend.CheckHealthRequest:
-				t.Headers[tokenHeaderName] = authorizationHeader
-				if idTokenHeader != "" {
-					t.Headers[idTokenHeaderName] = idTokenHeader
-				}
-			case *backend.CallResourceRequest:
-				t.Headers[tokenHeaderName] = []string{authorizationHeader}
-				if idTokenHeader != "" {
-					t.Headers[idTokenHeaderName] = []string{idTokenHeader}
-				}
+		case *backend.CheckHealthRequest:
+			t.Headers[tokenHeaderName] = authorizationHeader
+			if idTokenHeader != "" {
+				t.Headers[idTokenHeaderName] = idTokenHeader
+			}
+		case *backend.CallResourceRequest:
+			t.Headers[tokenHeaderName] = []string{authorizationHeader}
+			if idTokenHeader != "" {
+				t.Headers[idTokenHeaderName] = []string{idTokenHeader}
 			}
 		}
 	}
 
 	return nil
+}
+
+func (m *OAuthTokenMiddleware) getAuthTokenHeader(ctx context.Context, reqCtx *contextmodel.ReqContext) (authorizationHeader, idTokenHeader string) {
+	authorizationHeader = ""
+	idTokenHeader = ""
+
+	if reqCtx.SignedInUser != nil && reqCtx.SignedInUser.AuthenticatedBy == login.JWTModule {
+		m.log.Debug("try to get oauth token from jwt")
+		jwtToken := reqCtx.Req.Header.Get("Authorization")
+		m.log.Debug("jwt token:%v", jwtToken)
+		// Strip the 'Bearer' prefix if it exists.
+		jwtToken = strings.TrimPrefix(jwtToken, "Bearer ")
+		authorizationHeader = jwtToken
+		idTokenHeader = jwtToken
+		return
+	}
+
+	if token := m.oAuthTokenService.GetCurrentOAuthToken(ctx, reqCtx.SignedInUser); token != nil {
+		authorizationHeader = fmt.Sprintf("%s %s", token.Type(), token.AccessToken)
+		idToken, ok := token.Extra("id_token").(string)
+		if ok && idToken != "" {
+			idTokenHeader = idToken
+		}
+	}
+
+	return
 }
 
 func (m *OAuthTokenMiddleware) QueryData(ctx context.Context, req *backend.QueryDataRequest) (*backend.QueryDataResponse, error) {

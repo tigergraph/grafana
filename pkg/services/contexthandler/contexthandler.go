@@ -210,6 +210,7 @@ func WithAuthHTTPHeaders(ctx context.Context, cfg *setting.Cfg) context.Context 
 	list.Items = append(list.Items, "Authorization")
 
 	// if jwt is enabled we add it to the list. We can ignore in case it is set to Authorization
+	// so we can get jwt token header to Authorization in oauthtoken_middleware.go
 	if cfg.JWTAuthEnabled && cfg.JWTAuthHeaderName != "" && cfg.JWTAuthHeaderName != "Authorization" {
 		list.Items = append(list.Items, cfg.JWTAuthHeaderName)
 	}
