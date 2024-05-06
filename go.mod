@@ -219,7 +219,7 @@ require (
 	github.com/bufbuild/connect-go v1.10.0 // @grafana/observability-traces-and-profiling
 	github.com/dlmiddlecote/sqlstats v1.0.2 // @grafana/backend-platform
 	github.com/drone/drone-cli v1.6.1 // @grafana/grafana-release-guild
-	github.com/golang-migrate/migrate/v4 v4.7.0 // @grafana/backend-platform
+	github.com/golang-migrate/migrate/v4 v4.17.1 // @grafana/backend-platform
 	github.com/google/go-github v17.0.0+incompatible // @grafana/grafana-release-guild
 	github.com/google/go-github/v45 v45.2.0 // @grafana/grafana-release-guild
 	github.com/grafana/codejen v0.0.3 // @grafana/dataviz-squad
@@ -404,7 +404,7 @@ require (
 	github.com/chromedp/cdproto v0.0.0-20230802225258-3cf4e6d46a89 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/dgryski/go-metro v0.0.0-20211217172704-adc40b04c140 // indirect
-	github.com/docker/docker v24.0.7+incompatible // @grafana/grafana-release-guild
+	github.com/docker/docker v24.0.9+incompatible // @grafana/grafana-release-guild
 	github.com/elazarl/goproxy v0.0.0-20230731152917-f99041a5c027 // indirect
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32 // indirect
 	github.com/go-logr/logr v1.4.1 // @grafana/grafana-app-platform-squad
@@ -474,6 +474,11 @@ require github.com/getkin/kin-openapi v0.120.0 // @grafana/grafana-as-code
 require github.com/grafana/authlib v0.0.0-20240328140636-a7388d0bac72 // @grafana/identity-access-team
 
 require (
+	github.com/aws/aws-sdk-go-v2 v1.26.1 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.5 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.5 // indirect
+	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.23.4 // indirect
+	github.com/aws/smithy-go v1.20.2 // indirect
 	github.com/bahlo/generic-list-go v0.2.0 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
