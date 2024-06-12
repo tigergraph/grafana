@@ -81,6 +81,8 @@ export class DashboardGrid extends PureComponent<Props, State> {
     }
 
     this.eventSubs.add(dashboard.events.subscribe(DashboardPanelsChangedEvent, this.triggerForceUpdate));
+
+    window.parent.postMessage({ type: 'iframe-ready' }, '*');
   }
 
   componentWillUnmount() {
