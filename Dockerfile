@@ -28,6 +28,7 @@ COPY scripts scripts
 COPY emails emails
 
 ENV NODE_ENV production
+RUN yarn themes:generate
 RUN yarn build
 
 FROM ${GO_IMAGE} as go-builder
