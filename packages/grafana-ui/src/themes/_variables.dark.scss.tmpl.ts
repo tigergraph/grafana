@@ -401,4 +401,7 @@ $vertical-resize-handle-dots-hover: $gray-2;
 // Calendar
 $calendar-bg-days: $input-bg;
 $calendar-bg-now: $dark-10;
+
+$background-primary: #171717;
+
 `;

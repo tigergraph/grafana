@@ -401,4 +401,6 @@ $vertical-resize-handle-dots-hover: $gray-2;
 $calendar-bg-days: $white;
 $calendar-bg-now: $gray-6;
 
+$background-primary: #FFFFFF;
+
 `;
