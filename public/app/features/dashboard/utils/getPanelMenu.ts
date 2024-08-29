@@ -1,7 +1,7 @@
 import {
-  getTimeZone,
   PanelMenuItem,
   PluginExtensionPoints,
+  getTimeZone,
   urlUtil,
   type PluginExtensionPanelContext,
 } from '@grafana/data';
@@ -12,6 +12,7 @@ import { t } from 'app/core/internationalization';
 import { contextSrv } from 'app/core/services/context_srv';
 import { getExploreUrl } from 'app/core/utils/explore';
 import { panelToRuleFormValues } from 'app/features/alerting/unified/utils/rule-form';
+import { DashboardInteractions } from 'app/features/dashboard-scene/utils/interactions';
 import { DashboardModel } from 'app/features/dashboard/state/DashboardModel';
 import { PanelModel } from 'app/features/dashboard/state/PanelModel';
 import {
@@ -23,7 +24,6 @@ import {
   toggleLegend,
   unlinkLibraryPanel,
 } from 'app/features/dashboard/utils/panel';
-import { DashboardInteractions } from 'app/features/dashboard-scene/utils/interactions';
 import { InspectTab } from 'app/features/inspector/types';
 import { isPanelModelLibraryPanel } from 'app/features/library-panels/guard';
 import { createExtensionSubMenu } from 'app/features/plugins/extensions/utils';
@@ -144,13 +144,6 @@ export function getPanelMenu(
     });
   }
 
-  menu.push({
-    text: t('panel.header-menu.share', `Share`),
-    iconClassName: 'share-alt',
-    onClick: onSharePanel,
-    shortcut: 'p s',
-  });
-
   if (
     contextSrv.hasAccessToExplore() &&
     !(panel.plugin && panel.plugin.meta.skipDataQuery) &&
@@ -184,25 +177,6 @@ export function getPanelMenu(
   inspectMenu.push({
     text: t('panel.header-menu.inspect-json', `Panel JSON`),
     onClick: (e: React.MouseEvent) => onInspectPanel(InspectTab.JSON),
-  });
-
-  menu.push({
-    type: 'submenu',
-    text: t('panel.header-menu.inspect', `Inspect`),
-    iconClassName: 'info-circle',
-    onClick: (e: React.MouseEvent<HTMLElement>) => {
-      const currentTarget = e.currentTarget;
-      const target = e.target;
-
-      if (
-        target === currentTarget ||
-        (target instanceof HTMLElement && target.closest('[role="menuitem"]') === currentTarget)
-      ) {
-        onInspectPanel();
-      }
-    },
-    shortcut: 'i',
-    subMenu: inspectMenu,
   });
 
   const createAlert = async () => {
