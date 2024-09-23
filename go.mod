@@ -267,7 +267,7 @@ require (
 
 require github.com/grafana/gofpdf v0.0.0-20231002120153-857cc45be447 // @grafana/sharing-squad
 
-require github.com/grafana/pyroscope/api v0.3.0 // @grafana/observability-traces-and-profiling
+require github.com/grafana/pyroscope/api v0.4.0 // @grafana/observability-traces-and-profiling
 
 require github.com/grafana/pyroscope-go/godeltaprof v0.1.6 // @grafana/observability-traces-and-profiling
 
@@ -474,6 +474,7 @@ require github.com/getkin/kin-openapi v0.120.0 // @grafana/grafana-as-code
 require github.com/grafana/authlib v0.0.0-20240328140636-a7388d0bac72 // @grafana/identity-access-team
 
 require (
+	connectrpc.com/connect v1.14.0 // indirect
 	github.com/bahlo/generic-list-go v0.2.0 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
