@@ -22,6 +22,7 @@ import (
 	contextmodel "github.com/grafana/grafana/pkg/services/contexthandler/model"
 	"github.com/grafana/grafana/pkg/services/datasources"
 	"github.com/grafana/grafana/pkg/services/featuremgmt"
+	"github.com/grafana/grafana/pkg/services/login"
 	"github.com/grafana/grafana/pkg/services/oauthtoken"
 	pluginac "github.com/grafana/grafana/pkg/services/pluginsintegration/pluginaccesscontrol"
 	"github.com/grafana/grafana/pkg/setting"
@@ -262,6 +263,15 @@ func (proxy *DataSourceProxy) director(req *http.Request) {
 	}
 
 	if proxy.oAuthTokenService.IsOAuthPassThruEnabled(proxy.ds) {
+		if proxy.ctx.SignedInUser != nil && proxy.ctx.SignedInUser.AuthenticatedBy == login.JWTModule {
+			ctxLogger.Debug("try to get oauth token from jwt")
+			jwtToken := proxy.ctx.Req.Header.Get("Authorization")
+			ctxLogger.Debug("jwt token:%v", jwtToken)
+			// Strip the 'Bearer' prefix if it exists.
+			jwtToken = strings.TrimPrefix(jwtToken, "Bearer ")
+			req.Header.Set("X-ID-Token", jwtToken)
+		}
+
 		if token := proxy.oAuthTokenService.GetCurrentOAuthToken(req.Context(), proxy.ctx.SignedInUser, proxy.ctx.UserToken); token != nil {
 			req.Header.Set("Authorization", fmt.Sprintf("%s %s", token.Type(), token.AccessToken))
 
