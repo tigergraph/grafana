@@ -1,4 +1,4 @@
-import { PanelMenuItem, urlUtil, PluginExtensionLink } from '@grafana/data';
+import { PanelMenuItem, PluginExtensionLink, urlUtil } from '@grafana/data';
 import { t } from '@grafana/i18n';
 import { locationService } from '@grafana/runtime';
 import { createErrorNotification } from 'app/core/copy/appNotification';
@@ -122,13 +122,6 @@ export function getPanelMenu(
     });
   }
 
-  menu.push({
-    text: t('panel.header-menu.share', `Share`),
-    iconClassName: 'share-alt',
-    onClick: onSharePanel,
-    shortcut: 'p s',
-  });
-
   if (
     contextSrv.hasAccessToExplore() &&
     !(panel.plugin && panel.plugin.meta.skipDataQuery) &&
@@ -162,14 +155,6 @@ export function getPanelMenu(
   inspectMenu.push({
     text: t('panel.header-menu.inspect-json', `Panel JSON`),
     onClick: (e: React.MouseEvent) => onInspectPanel(InspectTab.JSON),
-  });
-
-  menu.push({
-    type: 'submenu',
-    text: t('panel.header-menu.inspect', `Inspect`),
-    iconClassName: 'info-circle',
-    shortcut: 'i',
-    subMenu: inspectMenu,
   });
 
   const createAlert = async () => {
