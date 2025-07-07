@@ -29,6 +29,11 @@ func NewOAuthTokenMiddleware(oAuthTokenService oauthtoken.OAuthTokenService) bac
 	})
 }
 
+const (
+	tokenHeaderName   = "Authorization"
+	idTokenHeaderName = "X-ID-Token"
+)
+
 type OAuthTokenMiddleware struct {
 	backend.BaseHandler
 	oAuthTokenService oauthtoken.OAuthTokenService
@@ -87,7 +92,6 @@ func (m *OAuthTokenMiddleware) getAuthTokenHeader(ctx context.Context, reqCtx *c
 	if reqCtx.SignedInUser != nil && reqCtx.SignedInUser.AuthenticatedBy == login.JWTModule {
 		m.log.Debug("try to get oauth token from jwt")
 		jwtToken := reqCtx.Req.Header.Get("Authorization")
-		m.log.Debug("jwt token:%v", jwtToken)
 		// Strip the 'Bearer' prefix if it exists.
 		jwtToken = strings.TrimPrefix(jwtToken, "Bearer ")
 		authorizationHeader = jwtToken
@@ -95,7 +99,7 @@ func (m *OAuthTokenMiddleware) getAuthTokenHeader(ctx context.Context, reqCtx *c
 		return
 	}
 
-	if token := m.oAuthTokenService.GetCurrentOAuthToken(ctx, reqCtx.SignedInUser); token != nil {
+	if token := m.oAuthTokenService.GetCurrentOAuthToken(ctx, reqCtx.SignedInUser, reqCtx.UserToken); token != nil {
 		authorizationHeader = fmt.Sprintf("%s %s", token.Type(), token.AccessToken)
 		idToken, ok := token.Extra("id_token").(string)
 		if ok && idToken != "" {
