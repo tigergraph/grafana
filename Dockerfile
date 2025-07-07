@@ -36,7 +36,7 @@ COPY scripts scripts
 COPY emails emails
 
 ENV NODE_ENV production
-RUN yarn themes:generate
+# RUN yarn themes:generate
 RUN yarn build
 
 # Golang build stage
@@ -71,7 +71,7 @@ COPY .citools/swagger .citools/swagger
 
 # Include vendored dependencies
 COPY pkg/util/xorm pkg/util/xorm
-COPY pkg/apis/folder pkg/apis/folder
+# COPY pkg/apis/folder pkg/apis/folder
 COPY pkg/apis/secret pkg/apis/secret
 COPY pkg/apiserver pkg/apiserver
 COPY pkg/apimachinery pkg/apimachinery

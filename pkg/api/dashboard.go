@@ -387,9 +387,9 @@ func (hs *HTTPServer) deleteDashboard(c *contextmodel.ReqContext) response.Respo
 			"error", err)
 	}
 
+	hs.log.Warn("Deleting dashboard", "dashboard", dash.UID, "user", c.SignedInUser.GetLogin())
 	err = hs.DashboardService.DeleteDashboard(c.Req.Context(), dash.ID, dash.UID, c.GetOrgID())
 	if err != nil {
-		hs.log.Warn("Deleting dashboard", "dashboard", dash.UID, "user", c.SignedInUser.GetLogin())
 		var dashboardErr dashboardaccess.DashboardErr
 		if ok := errors.As(err, &dashboardErr); ok {
 			if errors.Is(err, dashboards.ErrDashboardCannotDeleteProvisionedDashboard) {
