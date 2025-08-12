@@ -435,7 +435,7 @@ require (
 
 require k8s.io/code-generator v0.29.1 // @grafana/grafana-app-platform-squad
 
-require github.com/spyzhov/ajson v0.9.0 // @grafana/grafana-app-platform-squad
+require github.com/spyzhov/ajson v0.9.6 // @grafana/grafana-app-platform-squad
 
 require github.com/fullstorydev/grpchan v1.1.1 // @grafana/backend-platform
 
