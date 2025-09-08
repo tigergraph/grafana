@@ -20,7 +20,7 @@ require (
 	cuelang.org/go v0.6.0-0.dev // @grafana/grafana-as-code
 	github.com/Azure/azure-sdk-for-go v68.0.0+incompatible // @grafana/partner-datasources
 	github.com/Azure/go-autorest/autorest v0.11.29 // @grafana/backend-platform
-	github.com/BurntSushi/toml v1.3.2 // @grafana/identity-access-team
+	github.com/BurntSushi/toml v1.5.0 // @grafana/identity-access-team
 	github.com/Masterminds/semver v1.5.0 // @grafana/backend-platform
 	github.com/VividCortex/mysqlerr v0.0.0-20170204212430-6c6b55f8796f // @grafana/backend-platform
 	github.com/aws/aws-sdk-go v1.50.8 // @grafana/aws-datasources
@@ -81,7 +81,7 @@ require (
 	github.com/robfig/cron/v3 v3.0.1 // @grafana/backend-platform
 	github.com/russellhaering/goxmldsig v1.4.0 // @grafana/backend-platform
 	github.com/scottlepp/go-duck v0.0.15 // @grafana/grafana-app-platform-squad
-	github.com/stretchr/testify v1.9.0 // @grafana/backend-platform
+	github.com/stretchr/testify v1.10.0 // @grafana/backend-platform
 	github.com/teris-io/shortid v0.0.0-20171029131806-771a37caa5cf // @grafana/backend-platform
 	github.com/ua-parser/uap-go v0.0.0-20211112212520-00c877edfe0f // @grafana/backend-platform
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
@@ -227,7 +227,7 @@ require (
 	github.com/huandu/xstrings v1.3.2 // @grafana/partner-datasources
 	github.com/jmoiron/sqlx v1.3.5 // @grafana/backend-platform
 	github.com/matryer/is v1.4.0 // @grafana/grafana-as-code
-	github.com/urfave/cli v1.22.14 // @grafana/backend-platform
+	github.com/urfave/cli v1.22.17 // @grafana/backend-platform
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // @grafana/plugins-platform-backend
 	go.opentelemetry.io/contrib/propagators/jaeger v1.22.0 // @grafana/backend-platform
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.24.0 // @grafana/backend-platform
@@ -291,7 +291,7 @@ require (
 	github.com/centrifugal/protocol v0.10.0 // indirect
 	github.com/cloudflare/circl v1.3.7 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
-	github.com/cpuguy83/go-md2man/v2 v2.0.3 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.7 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/docker/distribution v2.8.2+incompatible // indirect
 	github.com/docker/go-connections v0.4.0 // indirect
