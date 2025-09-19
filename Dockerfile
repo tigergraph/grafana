@@ -42,8 +42,7 @@ COPY tsconfig.json eslint.config.js .editorconfig .browserslistrc .prettierrc.js
 COPY scripts scripts
 COPY emails emails
 
-ENV NODE_ENV production
-# RUN yarn themes:generate
+ENV NODE_ENV=production
 RUN yarn build
 
 # Golang build stage
