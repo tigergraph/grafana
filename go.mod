@@ -214,7 +214,7 @@ require (
 	github.com/Azure/azure-storage-blob-go v0.15.0 // @grafana/backend-platform
 	github.com/Azure/go-autorest/autorest/adal v0.9.23 // @grafana/backend-platform
 	github.com/armon/go-radix v1.0.0 // @grafana/grafana-app-platform-squad
-	github.com/blugelabs/bluge v0.1.9 // @grafana/backend-platform
+	github.com/blugelabs/bluge v0.2.2 // @grafana/backend-platform
 	github.com/blugelabs/bluge_segment_api v0.2.0 // @grafana/backend-platform
 	github.com/bufbuild/connect-go v1.10.0 // @grafana/observability-traces-and-profiling
 	github.com/dlmiddlecote/sqlstats v1.0.2 // @grafana/backend-platform
@@ -475,6 +475,7 @@ require github.com/grafana/authlib v0.0.0-20240328140636-a7388d0bac72 // @grafan
 
 require (
 	github.com/bahlo/generic-list-go v0.2.0 // indirect
+	github.com/blugelabs/ice/v2 v2.0.1 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
