@@ -1,6 +1,6 @@
 module github.com/grafana/grafana
 
-go 1.21.0
+go 1.24.0
 
 // Override docker/docker to avoid:
 // go: github.com/drone-runners/drone-runner-docker@v1.8.2 requires
@@ -33,7 +33,7 @@ require (
 	github.com/fatih/color v1.15.0 // @grafana/backend-platform
 	github.com/gchaincl/sqlhooks v1.3.0 // @grafana/backend-platform
 	github.com/go-ldap/ldap/v3 v3.4.4 // @grafana/identity-access-team
-	github.com/go-openapi/strfmt v0.22.0 // @grafana/alerting-squad-backend
+	github.com/go-openapi/strfmt v0.25.0 // @grafana/alerting-squad-backend
 	github.com/go-redis/redis/v8 v8.11.5 // @grafana/backend-platform
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // @grafana/backend-platform
 	github.com/go-sql-driver/mysql v1.7.1 // @grafana/backend-platform
@@ -81,7 +81,7 @@ require (
 	github.com/robfig/cron/v3 v3.0.1 // @grafana/backend-platform
 	github.com/russellhaering/goxmldsig v1.4.0 // @grafana/backend-platform
 	github.com/scottlepp/go-duck v0.0.15 // @grafana/grafana-app-platform-squad
-	github.com/stretchr/testify v1.9.0 // @grafana/backend-platform
+	github.com/stretchr/testify v1.11.1 // @grafana/backend-platform
 	github.com/teris-io/shortid v0.0.0-20171029131806-771a37caa5cf // @grafana/backend-platform
 	github.com/ua-parser/uap-go v0.0.0-20211112212520-00c877edfe0f // @grafana/backend-platform
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
@@ -93,13 +93,13 @@ require (
 	go.opentelemetry.io/otel/exporters/jaeger v1.10.0 // @grafana/backend-platform
 	go.opentelemetry.io/otel/sdk v1.24.0 // @grafana/backend-platform
 	go.opentelemetry.io/otel/trace v1.24.0 // @grafana/backend-platform
-	golang.org/x/crypto v0.21.0 // @grafana/backend-platform
+	golang.org/x/crypto v0.43.0 // @grafana/backend-platform
 	golang.org/x/exp v0.0.0-20231206192017-f3f8817b8deb // @grafana/alerting-squad-backend
-	golang.org/x/net v0.22.0 // @grafana/oss-big-tent @grafana/partner-datasources
+	golang.org/x/net v0.46.0 // @grafana/oss-big-tent @grafana/partner-datasources
 	golang.org/x/oauth2 v0.18.0 // @grafana/identity-access-team
-	golang.org/x/sync v0.6.0 // @grafana/alerting-squad-backend
+	golang.org/x/sync v0.17.0 // @grafana/alerting-squad-backend
 	golang.org/x/time v0.5.0 // @grafana/backend-platform
-	golang.org/x/tools v0.17.0 // @grafana/grafana-as-code
+	golang.org/x/tools v0.37.0 // @grafana/grafana-as-code
 	gonum.org/v1/gonum v0.12.0 // @grafana/observability-metrics
 	google.golang.org/api v0.155.0 // @grafana/backend-platform
 	google.golang.org/grpc v1.62.1 // @grafana/plugins-platform-backend
@@ -139,13 +139,13 @@ require (
 	github.com/emicklei/proto v1.10.0 // indirect
 	github.com/go-kit/log v0.2.1 //  @grafana/backend-platform
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
-	github.com/go-openapi/analysis v0.22.2 // indirect
-	github.com/go-openapi/errors v0.21.0 // indirect
-	github.com/go-openapi/jsonpointer v0.20.2 // indirect
-	github.com/go-openapi/jsonreference v0.20.4 // indirect
-	github.com/go-openapi/loads v0.21.5 // @grafana/alerting-squad-backend
+	github.com/go-openapi/analysis v0.24.0 // indirect
+	github.com/go-openapi/errors v0.22.4 // indirect
+	github.com/go-openapi/jsonpointer v0.22.1 // indirect
+	github.com/go-openapi/jsonreference v0.21.3 // indirect
+	github.com/go-openapi/loads v0.23.2 // @grafana/alerting-squad-backend
 	github.com/go-openapi/runtime v0.27.1 // @grafana/alerting-squad-backend
-	github.com/go-openapi/spec v0.20.14 // indirect
+	github.com/go-openapi/spec v0.22.1 // indirect
 	github.com/go-openapi/swag v0.22.9 // indirect
 	github.com/go-openapi/validate v0.23.0 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // @grafana/backend-platform
@@ -196,12 +196,12 @@ require (
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
-	go.mongodb.org/mongo-driver v1.13.1 // indirect
+	go.mongodb.org/mongo-driver v1.17.6 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.uber.org/atomic v1.11.0 // @grafana/alerting-squad-backend
 	go.uber.org/goleak v1.3.0 // indirect
-	golang.org/x/sys v0.18.0 // indirect
-	golang.org/x/text v0.14.0 // @grafana/backend-platform
+	golang.org/x/sys v0.37.0 // indirect
+	golang.org/x/text v0.30.0 // @grafana/backend-platform
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto v0.0.0-20240123012728-ef4313101c80 // indirect; @grafana/backend-platform
@@ -248,7 +248,7 @@ require (
 	github.com/microsoft/go-mssqldb v1.6.1-0.20240214161942-b65008136246 // @grafana/grafana-bi-squad
 	github.com/redis/go-redis/v9 v9.1.0 // @grafana/alerting-squad-backend
 	go.opentelemetry.io/contrib/samplers/jaegerremote v0.18.0 // @grafana/backend-platform
-	golang.org/x/mod v0.14.0 // @grafana/backend-platform
+	golang.org/x/mod v0.28.0 // @grafana/backend-platform
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b // @grafana/partner-datasources
 )
 
@@ -358,7 +358,7 @@ require (
 	go.starlark.net v0.0.0-20230525235612-a134d8f9ddca // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.26.0 // indirect
-	golang.org/x/term v0.18.0 // indirect
+	golang.org/x/term v0.36.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240123012728-ef4313101c80 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240123012728-ef4313101c80 // indirect
 	gopkg.in/fsnotify/fsnotify.v1 v1.4.7 // indirect
@@ -481,9 +481,18 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.9.1 // indirect
+	github.com/go-openapi/swag/conv v0.25.1 // indirect
+	github.com/go-openapi/swag/jsonname v0.25.1 // indirect
+	github.com/go-openapi/swag/jsonutils v0.25.1 // indirect
+	github.com/go-openapi/swag/loading v0.25.1 // indirect
+	github.com/go-openapi/swag/mangling v0.25.1 // indirect
+	github.com/go-openapi/swag/stringutils v0.25.1 // indirect
+	github.com/go-openapi/swag/typeutils v0.25.1 // indirect
+	github.com/go-openapi/swag/yamlutils v0.25.1 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
+	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/golang-lru v0.6.0 // indirect
 	github.com/invopop/jsonschema v0.12.0 // indirect
@@ -499,7 +508,10 @@ require (
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	github.com/wk8/go-ordered-map/v2 v2.1.8 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
+	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/arch v0.3.0 // indirect
+	golang.org/x/telemetry v0.0.0-20250908211612-aef8a434d053 // indirect
+	golang.org/x/tools/godoc v0.1.0-deprecated // indirect
 )
 
 // Use fork of crewjam/saml with fixes for some issues until changes get merged into upstream
