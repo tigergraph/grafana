@@ -22,7 +22,7 @@ require (
 	github.com/Azure/go-autorest/autorest v0.11.29 // @grafana/backend-platform
 	github.com/BurntSushi/toml v1.3.2 // @grafana/identity-access-team
 	github.com/Masterminds/semver v1.5.0 // @grafana/backend-platform
-	github.com/VividCortex/mysqlerr v0.0.0-20170204212430-6c6b55f8796f // @grafana/backend-platform
+	github.com/VividCortex/mysqlerr v1.0.0 // @grafana/backend-platform
 	github.com/aws/aws-sdk-go v1.50.8 // @grafana/aws-datasources
 	github.com/beevik/etree v1.2.0 // @grafana/backend-platform
 	github.com/benbjohnson/clock v1.3.5 // @grafana/alerting-squad-backend
