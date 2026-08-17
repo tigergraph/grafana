@@ -1,10 +1,10 @@
 module github.com/grafana/grafana/pkg/util/xorm
 
-go 1.21
+go 1.25.0
 
 require (
 	github.com/mattn/go-sqlite3 v1.14.19
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.11.1
 	xorm.io/builder v0.3.6
 	xorm.io/core v0.7.3
 )
